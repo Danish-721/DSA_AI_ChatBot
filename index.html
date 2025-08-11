@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>DSA Helper Bot</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+         <div class="chat-header">
+            <h2>DSA Dost Bot 🤖</h2>
+            <p>Aapka dost, Data Structures aur Algorithms ke liye!</p>
+            <button id="download-btn">Download Chat (PDF)</button></div>
+         <div class="chat-box" id="chat-box">
+        <div class="message bot-message">
+            <p>Namaste! DSA se juda koi bhi sawaal puchiye. Jaise, "What is Data Structure and Algorithm?"</p>
+        </div>
+         </div>
+         <form class="chat-input-form" id="chat-form">
+            <input type="text" id="user-input" placeholder="Yahan apna sawaal likhein..." autocomplete="off" required>
+            <button type="submit" id="send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+         </form>
+     </div>
+     
+
+     <script type="module" src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
