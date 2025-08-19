@@ -1,12 +1,7 @@
-// Google AI SDK ko import karna (ES6 Module type)
 import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 
-// --- START: Zaroori Cheezein ---
+const apiKey = "AIzaSyBnkn34d9fim6hAtaWLW3HcrhEA_jpT54k"; 
 
-// YAHAN APNI API KEY DAALEIN
-const apiKey = "AIzaSyBnkn34d9fim6hAtaWLW3HcrhEA_jpT54k"; // Aapki di hui key use kar rha hu
-
-// Chatbot ka behavior aur pehchan
 const systemInstruction = `
 Tum ek 'DSA Dost' ho. Ek expert Data Structures aur Algorithms (DSA) teacher, jo bilkul dost ki tarah samjhaata hai.previous reply ko save kar lena history me. Previous sari conversation ko yaad bhi rakhna kyuki user jyada type nhi karta.
     
@@ -32,25 +27,19 @@ Tumhare Rules:
 9.  **Out of the box:** Agar user esa question puch le jo tumhe nhi pata to use reply karna "Example Me abhi beta version hu. I am under development."
 `;
 
-// --- END: Zaroori Cheezein ---
-
-// HTML elements ko select karna
 const chatForm = document.getElementById('chat-form');
 const userInput = document.getElementById('user-input');
 const chatBox = document.getElementById('chat-box');
 const sendBtn = document.getElementById('send-btn');
 
-// Google AI model ko initialize karna
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash",
     systemInstruction: systemInstruction,
 });
 
-// Conversation history ko store karne ke liye ek array
 const history = [];
 
-// Form submit hone par function call karna
 chatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -98,7 +87,6 @@ chatForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Chat box mein naya message add karne ka function
 function addMessageToChatBox(text, className) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${className}`;
@@ -117,7 +105,6 @@ function addMessageToChatBox(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// "Typing..." indicator add karne ka function
 function addTypingIndicator() {
     const indicatorDiv = document.createElement('div');
     indicatorDiv.className = 'message bot-message typing-indicator';
@@ -127,7 +114,6 @@ function addTypingIndicator() {
     return indicatorDiv;
 }
 
-// --- PDF Download Feature (Updated) ---
 document.getElementById('download-btn').addEventListener('click', () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
@@ -142,22 +128,18 @@ document.getElementById('download-btn').addEventListener('click', () => {
         let prefix = msg.classList.contains('user-message') ? "You: " : "Bot: ";
         let text = msg.innerText.trim();
 
-        // Heading for each message
         doc.setFont("helvetica", "bold");
-        doc.setTextColor(0, 102, 204); // blue for prefix
+        doc.setTextColor(0, 102, 204); 
         doc.text(prefix, 10, y);
 
-        // Wrap text so it doesn't go outside page
         doc.setFont("helvetica", "normal");
-        doc.setTextColor(0, 0, 0); // black for content
+        doc.setTextColor(0, 0, 0); 
         let splitText = doc.splitTextToSize(text, 180);
 
         doc.text(splitText, 10, y + 7);
 
-        // Increase Y position
         y += (splitText.length * 7) + 10;
 
-        // Page break if needed
         if (y > 270) {
             doc.addPage();
             y = 20;
@@ -166,3 +148,4 @@ document.getElementById('download-btn').addEventListener('click', () => {
 
     doc.save('dsa-chat.pdf');
 });
+
